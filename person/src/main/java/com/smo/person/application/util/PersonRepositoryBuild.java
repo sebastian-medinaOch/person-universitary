@@ -16,6 +16,7 @@ public class PersonRepositoryBuild {
         personEntity.setPersonLastName(personRequest.getPersonLastName());
         personEntity.setPersonYear(personRequest.getPersonYear());
         personEntity.setPersonNumDoc(personRequest.getPersonNumDoc());
+        personEntity.setPersonColorEyes(personRequest.getPersonColorEyes());
         return personEntity;
 
     }
