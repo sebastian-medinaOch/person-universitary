@@ -5,7 +5,11 @@ import com.smo.person.application.services.ServicesGetPersons;
 import com.smo.person.application.services.ServicesDeletePerson;
 import com.smo.person.application.util.PersonRepositoryBuild;
 import com.smo.person.domain.gateways.PersonRepositoryInt;
+import com.smo.person.domain.gateways.ProfessionClientInt;
 import com.smo.person.domain.usecase.PersonUseCase;
+import com.smo.person.domain.usecase.ProfessionUseCase;
+import com.smo.person.domain.util.ProfessionBuild;
+import com.smo.person.infrastructure.client.util.CodeBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,8 +17,9 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfiguration {
 
     @Bean
-    public ServiceCreatePerson serviceCreatePerson(PersonUseCase personUseCase, PersonRepositoryBuild personRepositoryBuild){
-        return new ServiceCreatePerson(personRepositoryBuild,personUseCase);
+    public ServiceCreatePerson serviceCreatePerson(PersonUseCase personUseCase, PersonRepositoryBuild personRepositoryBuild,
+                                                   ProfessionUseCase professionUseCase){
+        return new ServiceCreatePerson(personRepositoryBuild,personUseCase,professionUseCase);
     }
 
     @Bean
@@ -33,8 +38,24 @@ public class BeanConfiguration {
     }
 
     @Bean
+    public ProfessionUseCase professionUseCase(ProfessionBuild professionBuild, ProfessionClientInt professionClientInt){
+        return new ProfessionUseCase(professionBuild, professionClientInt);
+    }
+
+    @Bean
     public PersonRepositoryBuild personRepositoryBuild(){
         return new PersonRepositoryBuild();
+    }
+
+    @Bean
+    public ProfessionBuild professionBuild(){
+        return new ProfessionBuild();
+    }
+
+
+    @Bean
+    public CodeBuilder codeBuilder(){
+        return new CodeBuilder();
     }
 
 }
