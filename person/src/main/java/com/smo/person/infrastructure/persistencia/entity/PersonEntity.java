@@ -24,5 +24,7 @@ public class PersonEntity {
     private String personYear;
     @Column(name = "PERSON_NUM_DOC")
     private String personNumDoc;
+    @Column(name = "PERSON_COLOR_EYES")
+    private String personColorEyes;
 
 }

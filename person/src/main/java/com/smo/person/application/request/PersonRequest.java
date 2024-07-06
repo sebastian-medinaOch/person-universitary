@@ -7,7 +7,8 @@ import lombok.NonNull;
 
 @Data
 public class PersonRequest {
-
+    @NotBlank(message = "El color de ojos no puede estar vacio.")
+    private String personColorEyes;
     @NotBlank(message = "El nombre de la persona no puede estar vacio.")
     private String personName;
     @NotBlank(message = "El apellido de la persona no puede estar vacio.")
